@@ -23,6 +23,12 @@ async function getFotos(){
     // Interpretando a resposta da requisição como json
     let fotos = await response.json();
 
+    // Reordenando o vetor de fotos para que as fotos mais recentes sejam exibidas
+    // no topo
+    fotos.sort(
+        (fotoA, fotoB) => fotoB.created_at - fotoA.created_at
+    )
+
     // Executando a função responsável por mostrar as fotos
     showFotos(fotos);
 
